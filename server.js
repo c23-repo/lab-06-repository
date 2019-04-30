@@ -21,9 +21,8 @@ app.get('/weather', (req, res) => {
     console.log(weatherData);
     console.log(weatherData[6]);
     console.log(weatherData[6][2]);
-    let weatherObj = new Weather(weatherData);
-    console.log(weatherObj);
-    res.send(weatherObj);
+    // let weatherObj = new Weather(weatherData);
+    res.send(weatherData);
   } catch ( err ){
     console.log('there was an error');
     res.status(500).send('server down');
@@ -40,13 +39,13 @@ app.get('/location', (req, res) => {
   }
 });
 
-let allWeatherInstance = [];
+// let allWeatherInstance = [];
 
-function Weather(data) {
-  this.forecast = data[6][2].summary;
-  this.time = new Date(data[6][1].time).toDateString();
-  allWeatherInstance.push(this);
-}
+// function Weather(data) {
+//   this.forecast = data[6][2].summary;
+//   this.time = new Date(data[6][1].time).toDateString();
+//   allWeatherInstance.push(this);
+// }
 
 let geoPosition = [];
 
