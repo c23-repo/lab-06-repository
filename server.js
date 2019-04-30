@@ -25,5 +25,15 @@ app.get('/weather', (req, res) => {
   }
 });
 
+app.get('/location', (req, res) => {
+  try{
+    let locationData = require('./data/geo.json');
+    res.send(locationData);
+  } catch ( err ){
+    console.log('there was an error');
+    res.status(500).send('server down');
+  }
+});
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
 
