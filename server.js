@@ -43,5 +43,15 @@ function Weather(forecast, time) {
   allWeatherInstance.push(this);
 }
 
+let geoPosition = [];
+
+function Position(search, format, lat, long) {
+  this.search_querry = search;
+  this.formatted_querry = format;
+  this.latitude = lat;
+  this.longitude = long;
+  geoPosition.push(this);
+}
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
 
