@@ -37,9 +37,9 @@ app.get('/location', (req, res) => {
 
 let allWeatherInstance = [];
 
-function Weather(forecast, time) {
-  this.forecast = forecast;
-  this.time = time;
+function Weather(data) {
+  this.forecast = data[6][2].summary;
+  this.time = new Date(data[6][1].time).toDateString();
   allWeatherInstance.push(this);
 }
 
