@@ -18,7 +18,12 @@ app.get( '/test', (req, res) => {
 app.get('/weather', (req, res) => {
   try{
     let weatherData = require('./data/darksky.json');
-    res.send(weatherData);
+    console.log(weatherData);
+    console.log(weatherData[6]);
+    console.log(weatherData[6][2]);
+    let weatherObj = new Weather(weatherData);
+    console.log(weatherObj);
+    res.send(weatherObj);
   } catch ( err ){
     console.log('there was an error');
     res.status(500).send('server down');
