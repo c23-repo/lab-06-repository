@@ -18,12 +18,7 @@ app.get( '/test', (req, res) => {
 app.get('/weather', (req, res) => {
   try{
     let weatherData = require('./data/darksky.json');
-    console.log(weatherData);
-    console.log(weatherData[6]);
-    console.log(weatherData[6][2]);
-    let weatherObj = new Weather(weatherData);
-    console.log(weatherObj);
-    res.send(weatherObj);
+    res.send(weatherData);
   } catch ( err ){
     console.log('there was an error');
     res.status(500).send('server down');
@@ -40,13 +35,13 @@ app.get('/location', (req, res) => {
   }
 });
 
-let allWeatherInstance = [];
+// let allWeatherInstance = [];
 
-function Weather(data) {
-  this.forecast = data[6][2].summary;
-  this.time = new Date(data[6][1].time).toDateString();
-  allWeatherInstance.push(this);
-}
+// function Weather(data) {
+//   this.forecast = data[6][2].summary;
+//   this.time = new Date(data[6][1].time).toDateString();
+//   allWeatherInstance.push(this);
+// }
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
 
