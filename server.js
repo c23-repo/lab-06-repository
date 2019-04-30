@@ -32,7 +32,10 @@ app.get('/weather', (req, res) => {
 app.get('/location', (req, res) => {
   try{
     let locationData = require('./data/geo.json');
-    res.send(locationData);
+    console.log('this is passing', locationData);
+    let locationObj = new Location(locationData);
+    console.log(` ${locationObj}locationObj is passing`);
+    res.send(locationObj);
   } catch ( err ){
     console.log('there was an error');
     res.status(500).send('server down');
@@ -47,14 +50,14 @@ app.get('/location', (req, res) => {
 //   allWeatherInstance.push(this);
 // }
 
-let geoPosition = [];
+let geoLocation = [];
 
-function Position(search, format, lat, long) {
-  this.search_querry = search;
-  this.formatted_querry = format;
-  this.latitude = lat;
-  this.longitude = long;
-  geoPosition.push(this);
+function Location(data) {
+  this.search_querry = data.results.address_components.long_name;
+  this.formatted_querry = data.results.formatted_address;
+  this.latitude = data.results.geometry.location.lat;
+  this.longitude = data.results.geometry.location.lng;
+  geoLocation.push(this);
 }
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
