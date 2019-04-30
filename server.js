@@ -35,5 +35,13 @@ app.get('/location', (req, res) => {
   }
 });
 
+let allWeatherInstance = [];
+
+function Weather(forecast, time) {
+  this.forecast = forecast;
+  this.time = time;
+  allWeatherInstance.push(this);
+}
+
 app.listen(PORT, () => console.log(`Listening on port ${PORT}.`));
 
